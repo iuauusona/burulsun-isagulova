@@ -3,6 +3,10 @@ package com.example.burulsun_isagulova.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Модель одного объявления с лалафо.кг.
+ * Содержит только те поля, которые отображаются на фронтенде.
+ */
 public class Announcements {
     private long id;
     private String title;

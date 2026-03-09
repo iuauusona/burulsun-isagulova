@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * Контроллер — обрабатывает входящие HTTP-запросы.
+ * Отдаёт HTML-страницу и JSON с объявлениями.
+ */
 @Controller
 public class AnnouncementsController {
 

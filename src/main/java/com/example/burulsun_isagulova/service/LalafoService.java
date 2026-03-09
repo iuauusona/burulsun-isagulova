@@ -18,6 +18,10 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Сервис для получения объявлений с lalafo.kg через внутренний API.
+ * Листает страницы с помощью курсора last_push_up, фильтрует старые объявления.
+ */
 @Service
 public class LalafoService {
 
@@ -29,6 +33,14 @@ public class LalafoService {
     private static final String API_NEXT =
             "https://lalafo.kg/api/search/v3/feed?expand=url&page=%d&per-page=20&vip_count=5&m-name=last_push_up&m-next-value=%s&sub-empty=0";
 
+    /**
+     * Загружает объявления с лалафо постранично.
+     * Использует курсорную пагинацию: каждая следующая страница запрашивается
+     * с параметром m-next-value, который берётся из last_push_up последнего
+     * элемента предыдущей страницы.
+     *
+     * @return список объявлений не старше 3 месяцев
+     */
     public List<Announcements> fetchAnnouncements() throws IOException, InterruptedException {
         List<Announcements> result = new ArrayList<>();
         Gson gson = new Gson();
@@ -53,7 +65,7 @@ public class LalafoService {
                             "AppleWebKit/537.36 (KHTML, like Gecko) " +
                             "Chrome/145.0.0.0 Safari/537.36")
                     .header("referer",        "https://lalafo.kg/")
-                    .header("x-cache-bypass", "yes")
+                    .header("x-cache-bypass", "yes")// отключаем кэш, получаем свежие данные
                     .build();
 
             HttpResponse<String> response =
