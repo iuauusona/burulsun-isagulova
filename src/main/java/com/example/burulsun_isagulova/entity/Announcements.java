@@ -10,9 +10,13 @@ public class Announcements {
     private String city;
     private BigDecimal price;
     private LocalDateTime publishedAt;
+    private String url;
 
     public long getId() {
         return id;
+    }
+    public String getUrl() {
+        return url;
     }
 
     public void setId(long id) {
@@ -57,5 +61,8 @@ public class Announcements {
 
     public void setPublishedAt(LocalDateTime publishedAt) {
         this.publishedAt = publishedAt;
+    }
+
+    public void setUrl(String url) {
     }
 }
