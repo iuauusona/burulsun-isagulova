@@ -36,7 +36,7 @@ public class LalafoService {
 
         String nextCursor = null;
 
-        for (int page = 1; page <= 15; page++) {
+        for (int page = 1; page <= 20; page++) {
 
             String url = (page == 1)
                     ? API_FIRST
@@ -133,7 +133,7 @@ public class LalafoService {
                 }
             }
 
-            System.out.println("Страница " + page + " загружена, курсор: " + nextCursor);
+            //System.out.println("Страница " + page + " загружена, курсор: " + nextCursor);
         }
 
         return result;
